@@ -1524,11 +1524,11 @@
  *     |    [-]    |
  *     O-- FRONT --+
  */
-#define NOZZLE_TO_PROBE_OFFSET { 0, -27, -2 }
+#define NOZZLE_TO_PROBE_OFFSET { 0, 27, -2 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
-//#define PROBING_MARGIN 13
+#define PROBING_MARGIN 10
 
 // X and Y axis travel speed (mm/min) between probes
 #define XY_PROBE_FEEDRATE (200*60)
@@ -1601,10 +1601,10 @@
  * Example: 'M851 Z-5' with a CLEARANCE of 4  =>  9mm from bed to nozzle.
  *     But: 'M851 Z+1' with a CLEARANCE of 2  =>  2mm from bed to nozzle.
  */
-//#define Z_CLEARANCE_DEPLOY_PROBE   10 // (mm) Z Clearance for Deploy/Stow
+#define Z_CLEARANCE_DEPLOY_PROBE   1 // (mm) Z Clearance for Deploy/Stow
 #define Z_CLEARANCE_BETWEEN_PROBES  1 // (mm) Z Clearance between probe points
-//#define Z_CLEARANCE_MULTI_PROBE     5 // (mm) Z Clearance between multiple probes
-//#define Z_AFTER_PROBING           5 // (mm) Z position after probing is done
+#define Z_CLEARANCE_MULTI_PROBE     1 // (mm) Z Clearance between multiple probes
+#define Z_AFTER_PROBING           5 // (mm) Z position after probing is done
 
 #define Z_PROBE_LOW_POINT          -2 // (mm) Farthest distance below the trigger-point to go before stopping
 
@@ -1738,11 +1738,11 @@
 
 // The size of the printable area
 #define X_BED_SIZE 200
-#define Y_BED_SIZE 168
+#define Y_BED_SIZE 200
 
 // Travel limits (linear=mm, rotational=°) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
-#define Y_MIN_POS -22
+#define Y_MIN_POS -17
 #define Z_MIN_POS 0
 #define X_MAX_POS (-X_MIN_POS+X_BED_SIZE)
 #define Y_MAX_POS (-Y_MIN_POS+Y_BED_SIZE)
@@ -1917,8 +1917,8 @@
  *   With an LCD controller the process is guided step-by-step.
  */
 //#define AUTO_BED_LEVELING_3POINT
-#define AUTO_BED_LEVELING_LINEAR
-//#define AUTO_BED_LEVELING_BILINEAR
+//#define AUTO_BED_LEVELING_LINEAR
+#define AUTO_BED_LEVELING_BILINEAR
 //#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
@@ -1974,7 +1974,7 @@
    */
   #define ENABLE_LEVELING_FADE_HEIGHT
   #if ENABLED(ENABLE_LEVELING_FADE_HEIGHT)
-    #define DEFAULT_LEVELING_FADE_HEIGHT 10.0 // (mm) Default fade height.
+    #define DEFAULT_LEVELING_FADE_HEIGHT 1.0 // (mm) Default fade height.
   #endif
 
   /**
@@ -2004,7 +2004,7 @@
 #if EITHER(AUTO_BED_LEVELING_LINEAR, AUTO_BED_LEVELING_BILINEAR)
 
   // Set the number of grid points per dimension.
-  #define GRID_MAX_POINTS_X 4
+  #define GRID_MAX_POINTS_X 6
   #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
   // Probe along the Y axis, advancing X after each column
